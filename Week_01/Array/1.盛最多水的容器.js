@@ -9,7 +9,7 @@
 var maxArea = function (height) {
     const len = height.length
     let max = 0
-    for (let i = 0; i < len; i++) {
+    for (let i = 0; i < len - 1; i++) {
         for (let j = i + 1; j < len; j++) {
             var area = (j - i) * Math.min(height[i], height[j])
             max = Math.max(area, max)
@@ -39,10 +39,17 @@ var maxArea = function(height) {
 };
 
 var maxArea = function (height) {
-    let max = 0
-    for (let i = 0, j = height.length - 1; i < j;) {
-        let minHeight = height[i] < height[j] ? height[i++] : height[j++]
-        max = Math.max(minHeight * (j - i + 1), max)
-    }
-    return max
+	let maxArea = 0
+	for (let i=0,j=height.length-1;i<j;){
+		maxArea = Math.max(maxArea, (j-i) * (height[i] < height[j] ? height[i++] : height[j--]) )
+	}
+	return maxArea
 }
+// var maxArea = function (height) {
+//     let max = 0
+//     for (let i = 0, j = height.length - 1; i < j;) {
+//         let minHeight = height[i] < height[j] ? height[i++] : height[j++]
+//         max = Math.max(minHeight * (j - i + 1), max)
+//     }
+//     return max
+// }
