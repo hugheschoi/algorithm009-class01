@@ -2,7 +2,7 @@ let Node = function (element) {
   this.element = element;
   this.next = null;
 };
-class LinkedList {
+class LinkedList extends Array {
   constructor() {
       this.length = 0;
       this.head = null;

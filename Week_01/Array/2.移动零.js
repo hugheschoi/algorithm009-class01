@@ -61,7 +61,7 @@ var moveZeroes2 = function (nums) {
 }
 // moveZeroes2(arr)
 // console.log(arr)
-
+var arr = [1,3,12,0,0]
 /*
  * 解法三： 遍历取得非0值，最后push0
  */
