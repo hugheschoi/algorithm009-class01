@@ -15,6 +15,8 @@ Key => 哈希函数=>存放的位置
 map: key 不能重复
 Set:  不重复元素 的集合
 
+题解：异位词，利用chartCodeAt - 97 解题
+
 tree Map 和 tree set 复杂度都是Ologn
 
 ### 树、二叉树、二叉搜索树
