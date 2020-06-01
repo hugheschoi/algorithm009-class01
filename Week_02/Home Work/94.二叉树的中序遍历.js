@@ -35,6 +35,20 @@ var inorderTraversal = function(root) {
     // return res
     
     // 题解二，颜色标记法, 按照中序的规则遍历，记录灰色是访问过的，白色是未访问过的，维护一个栈，标记这些节点，当遇到灰节点答案就push
+    /*
+        模板
+        标记颜色实际上是设置一个入栈的条件， 递归本身就是函数调用栈，利用栈实现类似的调用栈
+        声明一个ans， 一个stack
+        stack塞入默认值
+        while (stack.length > 0) {
+        const item = stack.pop(), // 弹出，此时如果不塞入，stack将继续弹出上一个值
+        if (color==='gray') { // 达到某个条件后，就把stack弹出的值放入ans中
+            ans.push(item)
+        } else {
+            stack.push({}) // 不满足条件，往栈里再塞入新值
+        }
+        }
+    */
     // const printArr = []
 	// if (!root) return printArr
 	// const stack = []
