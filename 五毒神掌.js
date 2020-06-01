@@ -1,4 +1,4 @@
-var inorderTraversal = function(root) {
+var inorderTraversal = function (root) {
   // 递归遍历法
   // const ans = []
   // function findVal(root) {
@@ -29,9 +29,9 @@ var inorderTraversal = function(root) {
     if (color === 'gray') {
       ans.push(pickValue)
     } else {
-      node.right && (stack.push({color: 'white', node: node.right}))
-      stack.push({color: 'gray', node: node})
-      node.left && (stack.push({color: 'white', node: node.left}))
+      node.right && stack.push({ color: 'white', node: node.right })
+      stack.push({ color: 'gray', node })
+      node.left && stack.push({ color: 'white', node: node.left })
     }
   }
   return ans
@@ -52,3 +52,40 @@ while (stack.length > 0) {
   }
 }
 */
+var inorderTraversal = function (root) {
+  const ans = []
+  const stack = [{
+    color: 'white',
+    node: root
+  }]
+  while (stack.length > 0) {
+    const pickValue = stack.pop()
+    const { color, node } = pickValue
+    if (color === 'gray') {
+      ans.push(node.val)
+    } else {
+      node.right && (stack.push({ color: 'white', node: node.right }))
+      stack.push({ color: 'gray', node: node })
+      node.left && (stack.push({ color: 'white', node: node.left }))
+    }
+  }
+  return ans
+}
+/* 除了颜色以外也可以用true和false标记 写法优化一下 */
+var inorderTraversal = function (root) {
+  const ans = []
+  if (!root) return ans
+  const stack = [[root, false]]
+  while (stack.length > 0) {
+    const pickValue = stack.pop()
+    const node = pickValue[0]
+    if (pickValue[1]) {
+      ans.push(node.val)
+    } else {
+      node.right && stack.push([node.right, false])
+      stack.push([node, true])
+      node.left && stack.push([node.left, false])
+    }
+  }
+  return ans
+}

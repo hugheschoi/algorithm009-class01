@@ -49,40 +49,84 @@ var inorderTraversal = function(root) {
         }
         }
     */
-    // const printArr = []
-	// if (!root) return printArr
-	// const stack = []
-	// stack.push({
-	// 	color: 'white',
-	// 	node: root
-	// })
-	// while (stack.length > 0) {
-	// 	const pickValue = stack.pop()
-	// 	const {	color, node } = pickValue
-	// 	if (color === 'gray') {
-	// 		printArr.push(node.val)
-	// 	} else {
-	// 		node.right && stack.push({color: 'white', node: node.right})
-	// 		stack.push({color: 'gray', node})
-	// 		node.left && stack.push({color: 'white', node:node.left})
-	// 	}
-	// }
+    /*
+        const printArr = []
+        if (!root) return printArr
+        const stack = []
+        stack.push({
+            color: 'white',
+            node: root
+        })
+        while (stack.length > 0) {
+            const pickValue = stack.pop()
+            const {	color, node } = pickValue
+            if (color === 'gray') {
+                printArr.push(node.val)
+            } else {
+                node.right && stack.push({color: 'white', node: node.right})
+                stack.push({color: 'gray', node})
+                node.left && stack.push({color: 'white', node:node.left})
+            }
+        }
+        return printArr
+    */
+    /* 除了颜色以外也可以用true和false标记 写法优化一下 */
+    /*
+        var inorderTraversal = function (root) {
+            const ans = []
+            if (!root) return ans
+            const stack = [[root, false]]
+            while (stack.length > 0) {
+            const pickValue = stack.pop()
+            const node = pickValue[0]
+            if (pickValue[1]) {
+                ans.push(node.val)
+            } else {
+                node.right && stack.push([node.right, false])
+                stack.push([node, true])
+                node.left && stack.push([node.left, false])
+            }
+            }
+            return ans
+        }
+    */
     // return printArr, stack每次只
     // 题解三， 利用栈
-    let res = [], stack = []
-    while (root || stack.length) {
-        if (root.left) {
-            stack.push(root)
-            root = root.left
-        } else if (!root.left && !root.right) {
-            res.push(root.val)
-            root = stack.pop()
-            root && (root.left = null)
-        } else if (root.right) {
-            root = root.right
+    /*
+        let res = [], stack = []
+        while (root || stack.length) {
+            if (root.left) {
+                stack.push(root)
+                root = root.left
+            } else if (!root.left && !root.right) {
+                res.push(root.val)
+                root = stack.pop()
+                root && (root.left = null)
+            } else if (root.right) {
+                root = root.right
+            }
         }
+        return res
+    */
+    // 中序遍历树 当节点仍然存在 或 栈还不为空 时， 如果节点存在，把节点推入栈，节点变为该节点的左节点。 
+    // 如果节点不存在了就拿到其父节点（stack.pop()）,并把值推入结果，然后把接着右子节点遍历
+    var inorderTraversal = function(root) {
+        const res = []
+        if (!root) return res
+        const stack = []
+        let curr = root
+        while(curr != null || stack.length > 0) {
+            if (curr) {
+                stack.push(curr)
+                curr = curr.left
+            } else {
+                let node = stack.pop()
+                res.push(node.val)
+                curr = node.right
+            }
+        }
+        return res
     }
-    return res
 };
 // @lc code=end
 
