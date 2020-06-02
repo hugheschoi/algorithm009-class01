@@ -91,23 +91,6 @@ var inorderTraversal = function(root) {
         }
     */
     // return printArr, stack每次只
-    // 题解三， 利用栈
-    /*
-        let res = [], stack = []
-        while (root || stack.length) {
-            if (root.left) {
-                stack.push(root)
-                root = root.left
-            } else if (!root.left && !root.right) {
-                res.push(root.val)
-                root = stack.pop()
-                root && (root.left = null)
-            } else if (root.right) {
-                root = root.right
-            }
-        }
-        return res
-    */
     // 中序遍历树 当节点仍然存在 或 栈还不为空 时， 如果节点存在，把节点推入栈，节点变为该节点的左节点。 
     // 如果节点不存在了就拿到其父节点（stack.pop()）,并把值推入结果，然后把接着右子节点遍历
     var inorderTraversal = function(root) {
