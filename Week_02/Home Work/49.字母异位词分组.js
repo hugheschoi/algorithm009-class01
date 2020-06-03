@@ -42,7 +42,6 @@ var groupAnagrams = function (strs) {
       }
       let key = arr.join()
       if (map.has(key)) {
-        console.log(key)
         let value = map.get(key)
         value.push(strs[i])
         map.set(key, value)
