@@ -67,3 +67,23 @@ function _generate (left, right, n, s) {
 }
 generateParenthesis(3)
 ```
+#### 分治和回溯
+分治和回溯是递归的一种写法，特殊的递归。关键的是找到重复性。
+
+分治：将问题划分成多个子问题
+```python
+def divide:
+  # terminator
+  if problem is Node:
+  return
+  # prepare data
+  
+  # drill down conquer subproblems，走到下一层并拆分子问题
+  subresult1 = divide(0)
+  subresult2 = divide(1)
+
+  # generate final result 合并子问题
+  result
+```
+回溯：不断在每一层上去试，一个一个试，错了就返回到上一步ß
+
