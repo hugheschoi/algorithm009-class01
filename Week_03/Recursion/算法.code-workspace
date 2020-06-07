@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"name": "leetcode-hughes-js",
+			"path": "../../../leetcode-hughes-js"
+		}
+	],
+	"settings": {}
+}
