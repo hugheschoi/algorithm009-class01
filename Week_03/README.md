@@ -73,17 +73,23 @@ generateParenthesis(3)
 分治：将问题划分成多个子问题
 ```python
 def divide:
-  # terminator
-  if problem is Node:
-  return
-  # prepare data
-  
-  # drill down conquer subproblems，走到下一层并拆分子问题
-  subresult1 = divide(0)
-  subresult2 = divide(1)
-
-  # generate final result 合并子问题
-  result
+  def divide_conquer(problem, param1, param2, ...): 
+  # recursion terminator 
+  if problem is None: 
+	print_result 
+	return 
+  # prepare data 
+  data = prepare_data(problem) 
+  subproblems = split_problem(problem, data) 
+  # conquer subproblems 
+  subresult1 = self.divide_conquer(subproblems[0], p1, ...) 
+  subresult2 = self.divide_conquer(subproblems[1], p1, ...) 
+  subresult3 = self.divide_conquer(subproblems[2], p1, ...) 
+  …
+  # process and generate the final result 
+  result = process_result(subresult1, subresult2, subresult3, …)
+	
+  # revert the current level states
 ```
 回溯：不断在每一层上去试，一个一个试，错了就返回到上一步ß
 
