@@ -47,6 +47,6 @@ var permute = function(nums) {
   const list = [];
   backtrack(list, [], nums)
   return list
-};ß
+};
 // @lc code=end
 
