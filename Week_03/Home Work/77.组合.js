@@ -15,7 +15,7 @@ var combine = function(n, k) {
 		if (subres.length === k) {
 			res.push(subres.slice(0))
 			return
-		}ß
+		}
 		for (let i = start; i<=n;i++) {
 			subres.push(i)
 			combineSub(i+1,subres)
