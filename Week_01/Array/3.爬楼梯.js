@@ -29,6 +29,13 @@ var climbStairs = function(n) {
  * 每次加一，res1等于原来res2， res2等于原来的sum 所以公式为sum = res1 + res2 ; res1 = res2 ; res2 = sum
  * 时间复杂度On， 空间复杂度O1
  */
+/*	
+	 	0   1   2   3	  4 
+		1   1   2	  3	  5
+		v1	v2	s
+	 		  v1  v2  s
+	 			    v1  v2  s
+*/
 var climbStairs2 = function (n) {
   let res1 = 1
   let res2 = 1
