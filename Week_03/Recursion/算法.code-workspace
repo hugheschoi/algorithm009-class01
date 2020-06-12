@@ -4,8 +4,7 @@
 			"path": "../.."
 		},
 		{
-			"name": "leetcode-hughes-js",
-			"path": "../../../leetcode-hughes-js"
+			"path": "../../../../coding/leetcode"
 		}
 	],
 	"settings": {}
