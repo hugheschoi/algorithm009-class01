@@ -7,7 +7,7 @@
 深度优先：
 ```python
 # 递归写法
-visited = set() 
+visited = set()
 def dfs(node, visited):
     if node in visited: # terminator
     	# already visited 
