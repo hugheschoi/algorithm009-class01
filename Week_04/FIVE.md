@@ -9,7 +9,7 @@
 #### 切题四件套
 1. 审题与出题者沟通，是否理解正确
 2. 想出所有解题的办法，比较写出最优解
-3. 多写，不要一直想，多敲代码
+3. 多写，多敲代码
 4. 测试用例也写上
 
 [BFS解题](https://leetcode-cn.com/problems/binary-tree-level-order-traversal/solution/bfs-de-shi-yong-chang-jing-zong-jie-ceng-xu-bian-l/)
