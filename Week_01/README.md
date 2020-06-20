@@ -4,11 +4,11 @@
 每当你申请一个数组时，内存管理器会开辟连续的地址，每个地址可以由内存管理器直接访问。这个时间复杂度是O1，所以数组的访问非常快，然而问题就是当增加、删除数组时出现，因为地址是连续的，所以每当插入一个、或者删除一个元素，就要移动之后的元素的位置，这样的时间复杂度就为On了。
 增删操作是On, 查询等操作是O1, n长度的数组，空间复杂度为On
 #### 数组算法的常用解法
-- **一维数组：** 
+- **一维数组：**
 1、一维数组的坐标变换
   ```javascript
     // 枚举法 On
-    for (var i = 0; i < nums.length; i++) {
+    for (var i = 0; i < nums.length - 1; i++) {
       for (var j = i + 1; j < nums.length; j++) {
         ...
       }
@@ -41,7 +41,53 @@
 然而访问就不简单了，要从head开始找 On
 总结： 查询On,其他操作都是O1
 #### 链表算法的常用解法
-[快慢指针](https://labuladong.gitbook.io/algo/di-ling-zhang-bi-du-xi-lie/shuang-zhi-zhen-ji-qiao)
+- [快慢指针](https://labuladong.gitbook.io/algo/di-ling-zhang-bi-du-xi-lie/shuang-zhi-zhen-ji-qiao)
+```javascript
+// 判断是否是环形链表
+function hasCycle(head) {
+  let fast = head, slow = head
+  while(fast !== null && fast.next !== null) {
+    fast = fast.next.next
+    slow = slow.next
+    if (fast === slow) return true
+  }
+  return false
+}
+```
+利用快慢指针解环形链表的一些结论：
+1. 如果有环，快指针一定会碰到慢指针
+2. 第一次相遇时，假设慢指针 slow 走了 k 步，那么快指针 fast 一定走了 2k 步
+3. 设相遇点距环的起点的距离为 m，那么环的起点距头结点 head 的距离为 k - m，也就是说如果从 head 前进 k - m 步就能到达环起点。
+题目： 已知链表中含有环，返回这个环的起始位置 (一次快慢相遇后，将slow放置在head，再一次匀速相遇后的点就是环的起点)
+```javascript
+// 判断是否是环形链表
+function detectCycle(head) {
+  let fast = head, slow = head
+  while(fast !== null && fast.next !== null) {
+    fast = fast.next.next
+    slow = slow.next
+    if (fast === slow) return break
+  }
+  slow = head
+  while(show != fast) {
+    fast = fast.next
+    slow = slow.next
+  }
+  return slow
+}
+```
+3、寻找链表的中点
+类似上面的思路，我们还可以让快指针一次前进两步，慢指针一次前进一步，当快指针到达链表尽头时，慢指针就处于链表的中间位置。
+```javascript
+while (fast != null && fast.next != null) {
+    fast = fast.next.next;
+    slow = slow.next;
+}
+// slow 就在中间位置
+return slow;
+```
+4.寻找链表的倒数第 k 个元素
+我们的思路还是使用快慢指针，让快指针先走 k 步，然后快慢指针开始同速前进。这样当快指针走到链表末尾 null 时，慢指针所在的位置就是倒数第 k 个链表节点（为了简化，假设 k 不会超过链表长度）：
 ### 跳表
 数组有序，快速查找可以用 二分查找
 链表有序的时候，该如何快速查询？ 用跳表
@@ -52,7 +98,7 @@ LRU Cache - Linked list： LRU 缓存机制
 Redis - Skip List：跳跃表、为啥 Redis 使用跳表（Skip List）而不是使用 Red-Black？
 
 ## 栈、队列、优先队列、双端队列
-### 栈 (stack) 和 队列 (queue) 
+### 栈 (stack) 和 队列 (queue)
 - 栈： 先入后出 添加删除皆为O1，查询为On，因为是无序的，需要一个一个遍历
 - 队列： 先入先出 添加删除皆为O1，查询为On
 实战中没有栈和队列，常见的是双端队列
