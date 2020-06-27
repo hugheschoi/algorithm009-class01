@@ -24,17 +24,27 @@ var largestRectangleArea = function (heights) {
 };
 // 题解二： 利用栈
 var largestRectangleArea = function (heights) {
-  let stack = [-1]
+  // let stack = [-1]
+  // let max = 0
+  // for (let i = 0; i < heights.length; i++) {
+  //   while (stack.length > 1 && heights[stack[stack.length - 1]] >= heights[i]) {
+  //     max = Math.max(max, heights[stack.pop()] * (i - stack[stack.length-1] - 1))
+  //   }
+  //   stack.push(i)
+  // }
+  // // 若栈有剩余数据，则剩下的一定是单调递增序列
+  // while(stack.length > 1) {
+  //   max = Math.max(max, heights[stack.pop] * (heights.length - stack[stack.length-1] - 1)) 
+  // }
+  // return max
+  const stack = []
   let max = 0
+  heights.push(0)
+  heights.shift(0)
   for (let i = 0; i < heights.length; i++) {
-    while (stack.length > 1 && heights[stack[stack.length - 1]] >= heights[i]) {
-      max = Math.max(max, heights[stack.pop()] * (i - stack[stack.length-1] - 1))
+    while(stack.length > 0 && heights[i] < heights[stack[stack.length - 1]]) {
+      max = Math.max(max, heights[stack.pop()] * (i - stack[stack.length - 1] - 1))
     }
-    stack.push(i)
-  }
-  // 若栈有剩余数据，则剩下的一定是单调递增序列
-  while(stack.length > 1) {
-    max = Math.max(max, heights[stack.pop] * (heights.length - stack[stack.length-1] - 1)) 
   }
   return max
 }
