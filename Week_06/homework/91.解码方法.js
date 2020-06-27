@@ -28,7 +28,7 @@ var numDecodings = function(s) {
   if (Number(s[0] +  s[1]) <= 26 && Number(s[0] +  s[1]) > 0) {
     dp[1] = s[1] === '0' ? 1 : 2
   } else {
-    dp[1] = s[1] === '0' ? 0 : 1~
+    dp[1] = s[1] === '0' ? 0 : 1
   }
   for (let i = 2; i < len; i++) {
     let value = Number(s[i-1] +  s[i])
