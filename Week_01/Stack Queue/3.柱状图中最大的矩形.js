@@ -34,7 +34,7 @@ var largestRectangleArea = function (heights) {
   // }
   // // 若栈有剩余数据，则剩下的一定是单调递增序列
   // while(stack.length > 1) {
-  //   max = Math.max(max, heights[stack.pop] * (heights.length - stack[stack.length-1] - 1)) 
+  //   max = Math.max(max, heights[stack.pop()] * (heights.length - stack[stack.length-1] - 1)) 
   // }
   // return max
   const stack = []

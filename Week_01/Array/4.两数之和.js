@@ -29,7 +29,7 @@ var twoSum = function (nums, target) {
     if (hash[nums[i]] !== undefined) {
       return [hash[nums[i]], i]
     }
-    hash[dif] = i
+    hash[diff] = i
   }
 }
 var nums = [2, 7, 11, 15]

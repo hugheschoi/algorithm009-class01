@@ -55,10 +55,8 @@ var threeSum = function(nums) {
       let sum = nums[i] + nums[L] + nums[R]
       if (sum === 0) {
         result.push([nums[i], nums[L], nums[R]])
-        // while(L<R && nums[L] === nums[L+1]) L++;
-        // while(L<R && nums[R] === nums[R-1]) R--;
-        while(L<R && nums[L] === nums[++L])
-        while(L<R && nums[R] === nums[--R])
+        while(L<R && nums[L] === nums[L+1]) L++;
+        while(L<R && nums[R] === nums[R-1]) R--;
         L++
         R--
       } else if (sum < 0) {
