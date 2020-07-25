@@ -1,4 +1,4 @@
-////// 高级动态规划
+# 高级动态规划
 动态规划：
 1. 状态转移方程
 2. 重复性，找到最优子结构
@@ -127,6 +127,82 @@ def f(x, y):
         dp[i][j] = dp[i - 1][j] + dp[j][i - 1]
   return dp[y][x]
 ```
+
+# 字符串
+
+## 字符串中的第一个唯一字符
+给定一个字符串，找到它的第一个不重复的字符，并返回它的索引。如果不存在，则返回 -1。
+s = "leetcode"
+返回 0
+
+s = "loveleetcode"
+返回 2
+题解一： 暴力法 On2
+```js
+var firstUniqChar = function(s) {
+  if (s.length === 1) return 0
+  for (let i = 0; i < s.length; i++) {
+    let isUniq = false
+    for (let j = 0; j < s.length; j++) {
+      if (i !== j && s[i] === s[j]) {
+        isUniq = true
+        break
+      }
+    }
+    if (!isUniq) {
+      return i
+    }
+  }
+  return -1
+};
+```
+二： 用map 时间复杂度On
+```js
+var firstUniqChar = function(s) {
+  const map = new Map()
+  for (let i = 0; i < s.length; i++) {
+    if (map[s[i]] === undefined) {
+      map[s[i]] = 1
+    } else {
+      map[s[i]] ++
+    }
+  }
+  for (let i = 0; i < s.length; i++) {
+    if (map[s[i]] === 1) {
+      return i
+    }
+  }
+  return -1
+};
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
