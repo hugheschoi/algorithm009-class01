@@ -70,5 +70,29 @@ var inorderTraversal = function(root) {
     }
     return res
 };
+// 中序遍历
+var inorderTraversal = function(root) {
+    const stack = []
+    const res = []
+    let curr = root
+    while (curr !== null || stack.length) {
+        if (curr !== null) {
+            stack.push(curr)
+            curr = curr.left
+        } else {
+            curr = stack.pop()
+            res.push(curr.val)
+            curr = curr.right
+        }
+        // while (curr !== null) {
+        // 	stack.push(curr)
+        // 	curr = curr.left
+        // }
+        // curr = stack.pop()
+        // res.push(curr.val)
+        // curr = curr.right
+    }
+    return res
+}
 // @lc code=end
 
